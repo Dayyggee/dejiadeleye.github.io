@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Djay Smith – FP&A Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #0f1f3d;
+    --navy-mid: #1a2f55;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --cream: #f9f6f0;
+    --cream-dark: #efe9dc;
+    --text: #1a1a1a;
+    --text-muted: #6b6b6b;
+    --border: rgba(15,31,61,0.12);
+    --mono: 'DM Mono', monospace;
+    --serif: 'Cormorant Garamond', serif;
+    --sans: 'Outfit', sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--cream); color: var(--text); line-height: 1.6; font-size: 15px; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(249,246,240,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; height: 56px;
+  }
+  .nav-name { font-family: var(--serif); font-size: 18px; font-weight: 600; letter-spacing: 0.02em; color: var(--navy); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { font-size: 13px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--navy); }
+
+  .hero {
+    min-height: 100vh; display: flex; align-items: center;
+    background: var(--navy); padding: 100px 40px 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before { content: ''; position: absolute; top: -100px; right: -100px; width: 600px; height: 600px; border: 1px solid rgba(201,168,76,0.15); border-radius: 50%; }
+  .hero::after { content: ''; position: absolute; top: 50px; right: 150px; width: 300px; height: 300px; border: 1px solid rgba(201,168,76,0.08); border-radius: 50%; }
+  .hero-inner { max-width: 860px; position: relative; z-index: 1; }
+  .hero-eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: 0.16em; font-weight: 300; color: var(--gold); text-transform: uppercase; margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+  .hero-eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--gold); }
+  .hero h1 { font-family: var(--serif); font-size: clamp(52px, 7vw, 88px); font-weight: 300; line-height: 1.05; color: var(--cream); letter-spacing: -0.01em; margin-bottom: 8px; }
+  .hero h1 em { font-style: italic; color: var(--gold-light); }
+  .hero-sub { font-family: var(--serif); font-size: 22px; font-weight: 300; font-style: italic; color: rgba(249,246,240,0.55); margin-bottom: 40px; }
+  .hero-desc { max-width: 540px; font-size: 15px; font-weight: 300; line-height: 1.75; color: rgba(249,246,240,0.65); margin-bottom: 48px; }
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 48px; }
+  .tag { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; padding: 6px 14px; border: 1px solid rgba(201,168,76,0.35); color: rgba(201,168,76,0.85); border-radius: 2px; font-weight: 300; }
+  .hero-cta { display: inline-flex; align-items: center; gap: 10px; background: var(--gold); color: var(--navy); font-size: 13px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; padding: 14px 28px; border-radius: 2px; transition: background 0.2s; }
+  .hero-cta:hover { background: var(--gold-light); }
+
+  section { padding: 100px 40px; }
+  .section-label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; font-weight: 300; color: var(--gold); text-transform: uppercase; display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .section-label::before { content: ''; width: 24px; height: 1px; background: var(--gold); }
+  .section-title { font-family: var(--serif); font-size: clamp(36px, 4vw, 52px); font-weight: 300; line-height: 1.1; color: var(--navy); margin-bottom: 60px; letter-spacing: -0.01em; }
+
+  .about { background: var(--cream-dark); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; max-width: 1100px; }
+  .about-text p { font-size: 16px; font-weight: 300; line-height: 1.8; color: #3a3a3a; margin-bottom: 20px; }
+  .about-text p:last-child { margin-bottom: 0; }
+  .credentials-list { list-style: none; }
+  .credentials-list li { display: flex; align-items: flex-start; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--border); font-size: 14px; font-weight: 300; }
+  .credentials-list li:first-child { border-top: 1px solid var(--border); }
+  .cred-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 5px; }
+  .cred-label { font-weight: 500; color: var(--navy); min-width: 120px; font-size: 13px; }
+  .cred-value { color: var(--text-muted); }
+
+  .projects { background: var(--cream); }
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2px; max-width: 1200px; border: 1px solid var(--border); }
+  .project-card { background: white; padding: 40px; border-right: 1px solid var(--border); cursor: pointer; transition: background 0.2s; text-decoration: none; color: inherit; display: block; }
+  .project-card:hover { background: var(--navy); }
+  .project-card:hover .project-title { color: var(--cream); }
+  .project-card:hover .project-co,
+  .project-card:hover .project-desc { color: rgba(249,246,240,0.65); }
+  .project-card:hover .project-num,
+  .project-card:hover .project-arrow { color: var(--gold); }
+  .project-card:hover .project-tag { color: rgba(201,168,76,0.75); border-color: rgba(201,168,76,0.25); }
+  .project-num { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; color: var(--gold); margin-bottom: 24px; font-weight: 300; }
+  .project-title { font-family: var(--serif); font-size: 24px; font-weight: 400; line-height: 1.2; color: var(--navy); margin-bottom: 8px; transition: color 0.2s; }
+  .project-co { font-size: 12px; font-weight: 300; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 20px; transition: color 0.2s; }
+  .project-desc { font-size: 14px; font-weight: 300; line-height: 1.7; color: #4a4a4a; margin-bottom: 24px; transition: color 0.2s; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 28px; }
+  .project-tag { font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; padding: 4px 10px; border: 1px solid var(--border); color: var(--text-muted); border-radius: 2px; font-weight: 300; transition: color 0.2s, border-color 0.2s; }
+  .project-arrow { font-size: 20px; color: var(--text-muted); transition: color 0.2s, transform 0.2s; display: inline-block; }
+  .project-card:hover .project-arrow { transform: translate(4px, -4px); }
+
+  .skills { background: var(--navy); }
+  .skills .section-title { color: var(--cream); }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; background: rgba(255,255,255,0.08); max-width: 1100px; border: 1px solid rgba(255,255,255,0.08); }
+  .skill-cell { background: var(--navy-mid); padding: 32px 28px; }
+  .skill-category { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; font-weight: 300; }
+  .skill-list { list-style: none; }
+  .skill-list li { font-size: 13px; font-weight: 300; color: rgba(249,246,240,0.65); padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .skill-list li:last-child { border-bottom: none; }
+
+  .contact { background: var(--cream-dark); text-align: center; }
+  .contact .section-label { justify-content: center; }
+  .contact .section-label::before { display: none; }
+  .contact .section-title { margin-bottom: 24px; }
+  .contact-sub { font-size: 16px; font-weight: 300; color: var(--text-muted); margin-bottom: 48px; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.7; }
+  .contact-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+  .contact-link { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; padding: 12px 24px; border: 1px solid var(--border); color: var(--navy); border-radius: 2px; transition: background 0.2s, border-color 0.2s, color 0.2s; }
+  .contact-link:hover { background: var(--navy); color: var(--cream); border-color: var(--navy); }
+  .contact-link.primary { background: var(--navy); color: var(--cream); border-color: var(--navy); }
+  .contact-link.primary:hover { background: var(--gold); border-color: var(--gold); color: var(--navy); }
+
+  footer { background: var(--navy); padding: 24px 40px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.08); }
+  footer span { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; font-weight: 300; color: rgba(249,246,240,0.3); }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { gap: 16px; }
+    section { padding: 60px 20px; }
+    .hero { padding: 80px 20px 60px; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    footer { flex-direction: column; gap: 8px; text-align: center; padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-name">Djay Smith</span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Work</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">FP&amp;A Portfolio</div>
+    <h1>Djay<br><em>Smith</em></h1>
+    <p class="hero-sub">Senior Financial Analyst &amp; Chartered Accountant</p>
+    <p class="hero-desc">Building the financial infrastructure that drives decisions — from multi-driver budgets and rolling forecasts to SQL analytics libraries and executive dashboards. Based in Indianapolis, IN.</p>
+    <div class="hero-tags">
+      <span class="tag">FP&amp;A</span>
+      <span class="tag">SQL</span>
+      <span class="tag">Power BI</span>
+      <span class="tag">Tableau</span>
+      <span class="tag">SAP</span>
+      <span class="tag">Hyperion</span>
+      <span class="tag">Advanced Excel</span>
+      <span class="tag">Oracle NetSuite</span>
+    </div>
+    <a href="#projects" class="hero-cta">View Work ↓</a>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="section-label">Background</div>
+  <h2 class="section-title">Finance at the<br>intersection of data</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>Chartered Accountant with years of experience in financial planning and analysis across banking, insurance, and financial services. I specialize in turning complex financial data into clear, decision-ready insights for executive leadership and Boards of Directors.</p>
+      <p>My work spans the full FP&amp;A lifecycle — annual budget builds, rolling forecasts, monthly close support, variance analysis, and management reporting — complemented by a strong command of the technical tools that make that work faster and more accurate.</p>
+      <p>I build things independently: SQL databases, Tableau dashboards, and Excel models using real public data, because understanding a company's financials well enough to model them is the best preparation for the work itself.</p>
+    </div>
+    <div>
+      <ul class="credentials-list">
+        <li><span class="cred-dot"></span><span class="cred-label">Designation</span><span class="cred-value">Chartered Accountant (CA)</span></li>
+        <li><span class="cred-dot"></span><span class="cred-label">Education</span><span class="cred-value">MSc Finance &amp; BSc Economics</span></li>
+        <li><span class="cred-dot"></span><span class="cred-label">Certifications</span><span class="cred-value">CFI FP&amp;A, Oracle NetSuite, CMA Candidate</span></li>
+        <li><span class="cred-dot"></span><span class="cred-label">Industries</span><span class="cred-value">Banking, Insurance, Financial Services</span></li>
+        <li><span class="cred-dot"></span><span class="cred-label">Location</span><span class="cred-value">Indianapolis, IN (Danville)</span></li>
+        <li><span class="cred-dot"></span><span class="cred-label">Experience</span><span class="cred-value">First Merchants Bank, Monument Title, Equitable Advisors, Stonecroft</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="projects" id="projects">
+  <div class="section-label">Selected Work</div>
+  <h2 class="section-title">Portfolio</h2>
+  <div class="projects-grid">
+
+    <a href="YOUR_GITHUB_SQL_LINK" target="_blank" class="project-card">
+      <div class="project-num">01 — SQL</div>
+      <div class="project-title">FP&amp;A SQL Analytics Library</div>
+      <div class="project-co">SQLite · Public Earnings Data</div>
+      <p class="project-desc">Production-level SQLite database with 5 relational tables and 5 analytical queries replicating core FP&amp;A workflows — budget vs. actuals with CASE-based severity flagging, CTE-driven quarterly consolidation, cost-per-unit analysis, and rolling averages across 12 quarters of data.</p>
+      <div class="project-tags">
+        <span class="project-tag">SQLite</span>
+        <span class="project-tag">CTEs</span>
+        <span class="project-tag">Variance Analysis</span>
+        <span class="project-tag">Budget vs. Actuals</span>
+      </div>
+      <span class="project-arrow">↗</span>
+    </a>
+
+    <a href="YOUR_TABLEAU_PUBLIC_LINK" target="_blank" class="project-card">
+      <div class="project-num">02 — Tableau</div>
+      <div class="project-title">Executive Performance Dashboard</div>
+      <div class="project-co">Tableau Public · 6-View Interactive</div>
+      <p class="project-desc">Six-view Tableau dashboard analyzing segment performance across 12 quarters — waterfall bridge decomposing gross profit drivers, geographic revenue heatmap by state, dual-axis trend lines, and ASP/GP per unit scatter analysis. Built on public SEC filings and earnings releases.</p>
+      <div class="project-tags">
+        <span class="project-tag">Tableau</span>
+        <span class="project-tag">Waterfall Chart</span>
+        <span class="project-tag">Heatmap</span>
+        <span class="project-tag">GP Analysis</span>
+      </div>
+      <span class="project-arrow">↗</span>
+    </a>
+
+    <a href="YOUR_EXCEL_MODEL_LINK" target="_blank" class="project-card">
+      <div class="project-num">03 — Excel / Power BI</div>
+      <div class="project-title">Annual Budget Build Model</div>
+      <div class="project-co">Excel + Power BI · Multi-Driver Forecast</div>
+      <p class="project-desc">Scalable annual budget model with automated variance tracking and scenario analysis across cost centers — directly replicating the budget build and forecasting process used in senior FP&amp;A roles. Includes a Power BI dashboard layer for executive consumption.</p>
+      <div class="project-tags">
+        <span class="project-tag">Excel</span>
+        <span class="project-tag">Power BI</span>
+        <span class="project-tag">Scenario Analysis</span>
+        <span class="project-tag">Cost Centers</span>
+      </div>
+      <span class="project-arrow">↗</span>
+    </a>
+
+    <a href="YOUR_INSURANCE_DASHBOARD_LINK" target="_blank" class="project-card">
+      <div class="project-num">04 — Power BI</div>
+      <div class="project-title">Insurance Financial Operations Dashboard</div>
+      <div class="project-co">Power BI · Regulated Environment</div>
+      <p class="project-desc">Executive dashboard built for a regulated insurance environment — covering budget-to-actual summaries, revenue trend reporting, expense variance by category, and GAAP-compliant close metrics. Designed for broad stakeholder consumption with drill-down capability.</p>
+      <div class="project-tags">
+        <span class="project-tag">Power BI</span>
+        <span class="project-tag">Insurance</span>
+        <span class="project-tag">GAAP Reporting</span>
+        <span class="project-tag">Variance</span>
+      </div>
+      <span class="project-arrow">↗</span>
+    </a>
+
+  </div>
+</section>
+
+<section class="skills" id="skills">
+  <div class="section-label">Technical Proficiency</div>
+  <h2 class="section-title">Tools &amp; Capabilities</h2>
+  <div class="skills-grid">
+    <div class="skill-cell">
+      <div class="skill-category">Planning Systems</div>
+      <ul class="skill-list">
+        <li>SAP / SAP BPC</li>
+        <li>Oracle Hyperion</li>
+        <li>Oracle NetSuite</li>
+        <li>Adaptive Insights</li>
+      </ul>
+    </div>
+    <div class="skill-cell">
+      <div class="skill-category">Analytics &amp; BI</div>
+      <ul class="skill-list">
+        <li>Power BI</li>
+        <li>Tableau</li>
+        <li>SQL / SQLite</li>
+        <li>Python (pandas)</li>
+      </ul>
+    </div>
+    <div class="skill-cell">
+      <div class="skill-category">Excel &amp; Modeling</div>
+      <ul class="skill-list">
+        <li>Advanced Excel</li>
+        <li>Financial Modeling</li>
+        <li>Scenario Analysis</li>
+        <li>Macro Automation</li>
+      </ul>
+    </div>
+    <div class="skill-cell">
+      <div class="skill-category">FP&amp;A Capabilities</div>
+      <ul class="skill-list">
+        <li>Annual Budget Builds</li>
+        <li>Rolling Forecasts</li>
+        <li>Variance Analysis</li>
+        <li>Board Reporting</li>
+      </ul>
+    </div>
+    <div class="skill-cell">
+      <div class="skill-category">Compliance</div>
+      <ul class="skill-list">
+        <li>US GAAP</li>
+        <li>Financial Close</li>
+        <li>Regulatory Reporting</li>
+        <li>Internal Controls</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="section-label">Get in Touch</div>
+  <h2 class="section-title">Let's connect</h2>
+  <p class="contact-sub">Open to senior FP&amp;A and financial analyst roles in the Indianapolis area. Available for hybrid or in-office positions.</p>
+  <div class="contact-links">
+    <a href="mailto:djay.smith@email.com" class="contact-link primary">Email Me</a>
+    <a href="https://linkedin.com/in/djaysmith" class="contact-link" target="_blank">LinkedIn</a>
+    <a href="https://github.com/djaysmith" class="contact-link" target="_blank">GitHub</a>
+  </div>
+</section>
+
+<footer>
+  <span>Djay Smith · FP&A Portfolio · Indianapolis, IN</span>
+  <span>CA · MSc Finance · CFI FP&A Certified</span>
+</footer>
+
+</body>
+</html>
