@@ -82,7 +82,7 @@
   .cred-value { color: var(--text-muted); }
 
   .projects { background: var(--cream); }
-  .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr)); gap: 2px; max-width: 1600px; border: 1px solid var(--border); }
+  .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; max-width: 1600px; border: 1px solid var(--border); }
   .project-card { background: white; padding: 40px; border-right: 1px solid var(--border); cursor: pointer; transition: background 0.2s; text-decoration: none; color: inherit; display: block; }
   .project-card:hover { background: var(--navy); }
   .project-card:hover .project-title { color: var(--cream); }
@@ -102,7 +102,7 @@
 
   .skills { background: var(--navy); padding-left: 20px; padding-right: 20px;}
   .skills .section-title { color: var(--cream); }
-  .skills-grid { display: grid; grid-template-columns: repeat(6, 1fr)); gap: 1px; background: rgba(255,255,255,0.08); max-width: 100%; border: 1px solid rgba(255,255,255,0.08); }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; background: rgba(255,255,255,0.08); max-width: 100%; border: 1px solid rgba(255,255,255,0.08); }
   .skill-cell { background: var(--navy-mid); padding: 32px 28px; }
   .skill-category { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; font-weight: 300; }
   .skill-list { list-style: none; }
@@ -125,7 +125,7 @@
 
   @media (max-width: 768px) {
     nav { padding: 0 20px; }
-    .nav-links { gap: 16px; }
+    .nav-links { gap: 10px; }
     section { padding: 60px 20px; }
     .hero { padding: 80px 20px 60px; }
     .about-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -149,8 +149,8 @@
   <div class="hero-inner">
     <div class="hero-eyebrow">FP&amp;A Portfolio</div>
     <h1>Adedeji Adeleye</h1>
-    <p class="hero-sub">Senior Financial Analyst &amp; Chartered Accountant</p>
-    <p class="hero-desc">Building the financial infrastructure that drives decisions, from multi-driver budgets and rolling forecasts to SQL analytics libraries and executive dashboards. Twelve years of Financial experience spanning FP&amp;A, cost management and operational finance across banking, insurance, construction, and financial services, with a track record of turning complex data into clear, decision-ready insights for executive leadership and Boards of Directors. Based in Indianapolis, IN.</p>
+    <p class="hero-sub"> FP&amp;A Professional &amp; Chartered Accountant</p>
+    <p class="hero-desc"> FP&amp;A and finance professional with 12 years of experience across banking, insurance, construction, and financial services. I build budgets, rolling forecasts, financial models, SQL-based analytics, and executive dashboards that turn complex financial and operational data into decision-ready insights. Chartered Accountant with hands-on experience across cost management, operational finance, SAP, Power BI, Tableau, and Oracle NetSuite. Based in Indianapolis, IN.</p>
     <div class="hero-tags">
       <span class="tag">FP&amp;A</span>
       <span class="tag">Cost &amp; Operational Finance</span>
@@ -172,21 +172,18 @@
   <h2 class="section-title">Finance at the<br>intersection of data</h2>
   <div class="about-grid">
     <div class="about-text">
-      <p>I'm Deji Adeleye, a Chartered Accountant and finance professional with a Bachelor's in Economics and a Master's in Finance. Over my career I've worked across financial and accounting roles in a range of industries, which has given me a well-rounded view of how organizations actually make financial decisions.</p>
-      <p>I consult through my own practice, Stonecroft Business and Financial Solutions, serving as an embedded senior finance resource for organizations that need FP&amp;A expertise without a full-time hire, covering budgeting, forecasting, variance analysis, and executive reporting. A significant part of that work is extracting data from ERP systems like SAP and Oracle NetSuite, building automated pipelines with SQL, and delivering reporting through Power BI and Tableau so decisions land faster and on better numbers. Consulting has given me real breadth: I've built processes from scratch, adapted quickly to new businesses, and learned to translate complex financial data into something stakeholders can actually act on.</p>
-      <p>My work also reaches into cost and operational finance, including job costing, cost-driver analysis, and working capital in operational settings like construction and contracting. That grounding in how the numbers connect to real operations shapes how I approach forecasting, budgeting, and performance analysis.</p>
-      <p>Alongside client work, I build financial models and dashboards to deepen the analytics side of my toolkit, currently a set of SQL pipelines and Power BI and Tableau builds working with real data. These are live projects I'm adding to as I go, and you can follow the progress here.</p>
-      <p>Certifications: Chartered Accountant (CA), HFMA, Google Data Analytics, CMA in progress. </p>
-      <p>Outside of work: travel, reading, and time with family.</p>
+      <p>I’m Deji Adeleye, a Chartered Accountant and FP&amp;A professional with a Master’s in Finance and a Bachelor’s in Economics. My experience spans banking, insurance, financial services, construction, and consulting, giving me a broad view of how financial planning connects to operating decisions.</p>
+      <p>Through Stonecroft Business and Financial Solutions, I support organizations with budgeting, forecasting, variance analysis, executive reporting, and financial modeling. My work often involves extracting and structuring ERP data from systems such as SAP and Oracle NetSuite, using SQL to automate analysis, and delivering decision-ready reporting through Power BI and Tableau.</p>
+      <p>I also build independent FP&amp;A projects using public-company financial data to deepen my work in forecasting, cost analysis, dashboarding, and financial analytics. The portfolio below includes models and reporting tools built with SEC EDGAR data, Excel, Python, SQL, Power BI, and Tableau.</p>
+      <p>Credentials: Chartered Accountant (CA), Certified Specialist Accounting and Finance (CSAF) – HFMA, CHFP in progress, CMA candidate.</p>
     </div>
     <div>
       <ul class="credentials-list">
         <li><span class="cred-dot"></span><span class="cred-label">Designation</span><span class="cred-value">Chartered Accountant (CA)</span></li>
-        <li><span class="cred-dot"></span><span class="cred-label">Education</span><span class="cred-value">MSc Finance &amp; BSc Economics</span></li>
-        <li><span class="cred-dot"></span><span class="cred-label">Certifications</span><span class="cred-value">Oracle NetSuite, CMA Candidate</span></li>
-        <li><span class="cred-dot"></span><span class="cred-label">Industries</span><span class="cred-value">Banking, Insurance, Financial Services, Construction</span></li>
+        <li><span class="cred-dot"></span><span class="cred-label">Education</span><span class="cred-value">MSc Finance  ·  BSc Economics</span></li>
+        <li><span class="cred-dot"></span><span class="cred-label">Certifications</span><span class="cred-value">CSAF – HFMA · CHFP in Progress · CMA Candidate</span></li>
+        <li><span class="cred-dot"></span><span class="cred-label">Industries</span><span class="cred-value">Banking · Insurance · Healthcare · Financial Services · Construction</span></li>
         <li><span class="cred-dot"></span><span class="cred-label">Location</span><span class="cred-value">Indianapolis, IN</span></li>
-        <li><span class="cred-dot"></span><span class="cred-label">Experience</span><span class="cred-value">First Merchants Bank, Monument Title, Equitable Advisors, Stonecroft</span></li>
       </ul>
     </div>
   </div>
